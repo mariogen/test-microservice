@@ -1,0 +1,5 @@
+name: test-microservice
+dependencies:
+- python
+- requests
+- flask
