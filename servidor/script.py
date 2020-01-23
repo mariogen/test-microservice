@@ -4,14 +4,14 @@ app = Flask(__name__)
 
 data = {}
 
-@app.route('/write',methods=['post'])
+@app.route('/write')
 def write():
-    data.update(request.json)
+    data.update(request.args.to_dict())
     return jsonify({'success':True})
 
-@app.route('/read',methods=['post'])
+@app.route('/read')
 def read():
-    return jsonify({tag:data.get(tag,None) for tag in request.json})
+    return jsonify({tag:data.get(tag,None) for tag in request.args.getlist('tag')})
 
 if __name__=='__main__':
     app.run(host='0.0.0.0')

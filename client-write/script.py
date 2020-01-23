@@ -8,6 +8,6 @@ server = 'http://'+os.environ.get('SERVER','localhost:5000')+'/write'
 
 while True :
     values = {tag:random.random() for tag in tags}
-    requests.post(server,json=values)
+    requests.get(server,params=values)
     print('.',end='',flush=True)
     time.sleep(1)
